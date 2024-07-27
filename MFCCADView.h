@@ -7,6 +7,9 @@
 #include "pen_dlg.h"
 #include "brush_dlg.h"
 #include "edit_style_dlg.h"
+#include "MFCCADDoc.h"
+#include "tree_cwnd.h"
+
 class CMFCCADView : public CView {
 
 	enum class Menu {
@@ -24,6 +27,9 @@ public:
 // 操作
 public:
 
+private:
+	void UpdateTreeView();
+	void AddDataTreeView(CTreeCtrl& tree_ctrl);
 // 重写
 public:
 	virtual void OnDraw(CDC* pDC);  // 重写以绘制该视图

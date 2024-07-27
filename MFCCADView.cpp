@@ -82,6 +82,59 @@ BOOL CMFCCADView::PreCreateWindow(CREATESTRUCT& cs)
 
 // CMFCCADView 绘图
 
+/// <summary>
+/// 更新树窗口
+/// </summary>
+void CMFCCADView::UpdateTreeView() {
+
+	CMFCCADDoc* doc_ptr = (CMFCCADDoc*)GetDocument();
+
+	POSITION pos = doc_ptr->GetFirstViewPosition();
+	while (pos != NULL)
+	{
+		CView* pView = doc_ptr->GetNextView(pos);
+		if (pView->GetRuntimeClass()->IsDerivedFrom(RUNTIME_CLASS(TreeCWnd))) {
+			TreeCWnd* tree = (TreeCWnd*)pView;
+			CTreeCtrl& tree_ctrl = tree->GetTreeCtrl();
+			AddDataTreeView(tree_ctrl);
+			return;
+		}
+	}
+	return;
+}
+
+/// <summary>
+/// 添加数据到Tree控件
+/// </summary>
+/// <param name="tree_ctrl">CTreeCtrl</param>
+void CMFCCADView::AddDataTreeView(CTreeCtrl& tree_ctrl) {
+	//清空数据
+	tree_ctrl.DeleteAllItems();
+	//得到所有图形信息
+	GraphInfoStack stack;
+	drawdc.GetGraphInfo(stack);
+	//导入到控件
+	while (!stack.empty()) {
+		GraphInfo temp = stack.top();
+
+		CString tempstr;
+		tempstr.Format(_T("%s:ID(%d)"), temp.type.GetBuffer(), temp.key);
+		HTREEITEM root = tree_ctrl.InsertItem(tempstr);
+
+		tempstr.Format(_T("%d"), temp.key);
+		tree_ctrl.InsertItem(tempstr, root);
+
+		tempstr.Format(_T("起点:(X=%d)-(Y=%d)"), temp.coord1.x, temp.coord1.y);
+		tree_ctrl.InsertItem(tempstr, root);
+
+		tempstr.Format(_T("终点:(X=%d)-(Y=%d)"), temp.coord2.x, temp.coord2.y);
+		tree_ctrl.InsertItem(tempstr, root);
+
+		stack.pop();
+	}
+	return;
+}
+
 void CMFCCADView::OnDraw(CDC* pDC)
 {
 	CMFCCADDoc* pDoc = GetDocument();
@@ -93,6 +146,9 @@ void CMFCCADView::OnDraw(CDC* pDC)
 	CRect crect_wnd;
 	GetClientRect(&crect_wnd);
 	drawdc.DrawPaintDC(pDC, crect_wnd);
+	//更新树控件
+	UpdateTreeView();
+	return;
 }
 
 
@@ -199,7 +255,6 @@ void CMFCCADView::OnLButtonUp(UINT nFlags, CPoint point) {
 	//更新界面
 	InvalidateRect(nullptr, FALSE);
 	UpdateWindow();
-
 	CView::OnLButtonUp(nFlags, point);
 }
 
@@ -383,7 +438,6 @@ void CMFCCADView::OnFileSave() {
 		return;
 	}
 	CString path = file_dlg.GetPathName();
-	drawdc.Deserialization(path.GetBuffer());
 	//序列化
 	drawdc.Serialization(path.GetBuffer());
 	return;

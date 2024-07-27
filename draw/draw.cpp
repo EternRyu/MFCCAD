@@ -275,6 +275,38 @@ void DrawDC::IsSelect(CPoint point) {
 }
 
 /// <summary>
+/// 设置选中
+/// </summary>
+/// <param name="key">图形的key</param>
+void DrawDC::IsSelect(DWORD64 key) {
+	//空返回
+	if (map_graphics.empty()) {
+		return;
+	}
+	MapGraphicsPtr::iterator it = map_graphics.find(key);
+	//没找到直接返回
+	if (it == map_graphics.end()) {
+		return;
+	}
+	if (select.obj) {
+		select.obj = nullptr;
+	}
+	//找到设置为选中
+	select.key = key;
+	select.obj = it->second;
+	return;
+}
+
+/// <summary>
+/// 取消选中
+/// </summary>
+void DrawDC::UnSelect() {
+	select.key = -1;
+	select.obj = nullptr;
+	return;
+}
+
+/// <summary>
 /// 空判断
 /// </summary>
 /// <returns></returns>
@@ -603,6 +635,66 @@ void DrawDC::Deserialization(const wchar_t* path) {
 	
 
 	return;
+}
+
+/// <summary>
+/// 得到所以图形信息
+/// </summary>
+/// <param name="stack">保存数据的栈</param>
+void DrawDC::GetGraphInfo(GraphInfoStack& stack) {
+	//反向迭代器遍历
+	for (MapGraphicsPtr::reverse_iterator it = map_graphics.rbegin(); it != map_graphics.rend(); it++) {
+		GraphInfo temp;
+		//得到图形KEY
+		temp.key = it->first;
+		//得到图形类型名称
+		temp.type = GetTypeStr(it->second->type());
+		//得到图形坐标
+		temp.coord1 = it->second->getbegin();
+		temp.coord2 = it->second->getend();
+		//得到图形画笔
+		temp.pen = it->second->PenGetLogpen();
+		//得到图形画刷
+		temp.brush = it->second->BrushGetLogBrush();
+		//保存到栈
+		stack.push(temp);
+	}
+	return;
+}
+
+/// <summary>
+/// 得到图形标志位对应的图形信息字符串
+/// </summary>
+/// <param name="type">标志位</param>
+/// <returns></returns>
+CString DrawDC::GetTypeStr(Graphics::PatternType type) {
+	CString str;
+	switch (type) {
+		case Graphics::PatternType::GRAPHICS: {
+			str = "图形";
+			break;
+		}
+		case Graphics::PatternType::LINE: {
+			str = "直线";
+			break;
+		}	
+		case Graphics::PatternType::RECTANGLE: {
+			str = "矩形";
+			break;
+		}
+		case Graphics::PatternType::ROUND: {
+			str = "圆形";
+			break;
+		}
+		case Graphics::PatternType::FIVEPOINTEDSTAR: {
+			str = "五角星";
+			break;
+		}
+		default: {
+			break;
+		}
+	}
+	return str;
 }
 
 /// <summary>

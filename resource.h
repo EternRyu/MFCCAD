@@ -9,6 +9,7 @@
 #define IDD_DIALOG2                     311
 #define IDD_DIALOG3                     312
 #define IDR_MENU1                       313
+#define IDR_MENU2                       314
 #define IDC_BUTTON1                     1000
 #define IDC_BUTTON2                     1001
 #define IDC_COMBO1                      1002
@@ -39,13 +40,15 @@
 #define MENU_EDIT                       32789
 #define ID_32790                        32790
 #define ID_EDIT_RUNDO                   32791
+#define MENU2_ROTATE                    32794
+#define MENU2_DELETE                    32795
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        314
-#define _APS_NEXT_COMMAND_VALUE         32794
+#define _APS_NEXT_COMMAND_VALUE         32796
 #define _APS_NEXT_CONTROL_VALUE         1005
 #define _APS_NEXT_SYMED_VALUE           310
 #endif

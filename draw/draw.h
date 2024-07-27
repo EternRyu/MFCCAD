@@ -1,11 +1,30 @@
 #pragma once
 #include "draw_factory.h"
+#include <stack>
 #include <list>
 #include <map>
 #include <memory>
 //#include <math.h>
 #include <fstream>
 #include <iostream>
+
+
+
+typedef struct GraphInfo {
+	//图形key
+	DWORD key;
+	//图形类型
+	CString type;
+	//图形坐标
+	CPoint coord1;
+	CPoint coord2;
+	//图形画笔
+	LOGPEN pen;
+	//图形画刷
+	LOGBRUSH brush;
+};
+
+typedef std::stack<GraphInfo> GraphInfoStack;
 
 /// <summary>
 /// 图形绘图操作类
@@ -66,12 +85,17 @@ public://外部操作
 	void DrawSelectSetBrush(LOGBRUSH brush);
 	LOGPEN DrawSelectGetPen();
 	LOGBRUSH DrawSelectGetBrush();
+	//设置选中
 	void IsSelect(CPoint point);
+	void IsSelect(DWORD64 key);
+	//取消选中
+	void UnSelect();
 	bool SelectEmpty();
 	void MoveStart(CPoint begin);
 	void Moving(CPoint cpoint);
 	void MoveEnd(CPoint end);
 	void RotatePattern(double angle);
+	//删除选中图形
 	void DeletePattern();
 	void DrawUndo();
 	void DrawRUndo();
@@ -81,6 +105,11 @@ public://外部操作
 	void Serialization(const wchar_t* path);
 	//反序列化
 	void Deserialization(const wchar_t* path);
+	//获取所有图形信息
+	void GetGraphInfo(GraphInfoStack& stack);
+	//根据类型参数返回类型的字符串名称
+	CString GetTypeStr(Graphics::PatternType type);
+	//
 	
 	
 

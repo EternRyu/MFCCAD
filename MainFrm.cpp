@@ -7,6 +7,9 @@
 #include "MFCCAD.h"
 
 #include "MainFrm.h"
+#include "tree_cwnd.h"
+
+#include"MFCCADView.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -94,3 +97,22 @@ void CMainFrame::Dump(CDumpContext& dc) const
 
 // CMainFrame 消息处理程序
 
+
+
+BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext) {
+	spliter.CreateStatic(this, 1, 2); //一行两列
+
+	CRect rcClient;
+	GetClientRect(&rcClient);
+	//填充View
+	
+	spliter.CreateView(0, 0, RUNTIME_CLASS(TreeCWnd),
+		SIZE{ rcClient.Width() / 6, rcClient.Height() }, pContext);
+
+	spliter.CreateView(0, 1, RUNTIME_CLASS(CMFCCADView),
+		SIZE{ rcClient.Width() * 5 / 3, rcClient.Height() }, pContext);
+
+	//spliter.CreateView(0, 0, RUNTIME_CLASS(TreeCWnd),
+	//	SIZE{ rcClient.Width() / 3, rcClient.Height() }, pContext);
+	return TRUE;//CFrameWnd::OnCreateClient(lpcs, pContext);
+}
