@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="draw">
+      <UniqueIdentifier>{b7864836-5075-4b04-b5ca-816931b051af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="draw\style">
+      <UniqueIdentifier>{330b9846-6531-434e-b62f-b1743e072584}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PenDlg">
+      <UniqueIdentifier>{4b53b117-ae31-42d1-9dc4-5a068f50b919}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BrushDlg">
+      <UniqueIdentifier>{dc0eaa56-1d6b-4527-b0f5-880d71294248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditStyleDlg">
+      <UniqueIdentifier>{c4e289a1-ea57-4028-b277-a3dfa8ebe443}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MFCCAD.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MFCCADDoc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MFCCADView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="draw\draw.h">
+      <Filter>draw</Filter>
+    </ClInclude>
+    <ClInclude Include="draw\draw_factory.h">
+      <Filter>draw</Filter>
+    </ClInclude>
+    <ClInclude Include="draw\draw_graphics.h">
+      <Filter>draw</Filter>
+    </ClInclude>
+    <ClInclude Include="draw\draw_line.h">
+      <Filter>draw</Filter>
+    </ClInclude>
+    <ClInclude Include="draw\draw_polygon.h">
+      <Filter>draw</Filter>
+    </ClInclude>
+    <ClInclude Include="draw\draw_rectangle.h">
+      <Filter>draw</Filter>
+    </ClInclude>
+    <ClInclude Include="draw\draw_round.h">
+      <Filter>draw</Filter>
+    </ClInclude>
+    <ClInclude Include="draw\style\draw_style.h">
+      <Filter>draw\style</Filter>
+    </ClInclude>
+    <ClInclude Include="draw\style\draw_pen.h">
+      <Filter>draw\style</Filter>
+    </ClInclude>
+    <ClInclude Include="draw\style\draw_brush.h">
+      <Filter>draw\style</Filter>
+    </ClInclude>
+    <ClInclude Include="pen_dlg.h">
+      <Filter>PenDlg</Filter>
+    </ClInclude>
+    <ClInclude Include="brush_dlg.h">
+      <Filter>BrushDlg</Filter>
+    </ClInclude>
+    <ClInclude Include="edit_style_dlg.h">
+      <Filter>EditStyleDlg</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MFCCAD.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MFCCADDoc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MFCCADView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="draw\draw.cpp">
+      <Filter>draw</Filter>
+    </ClCompile>
+    <ClCompile Include="draw\style\draw_pen.cpp">
+      <Filter>draw\style</Filter>
+    </ClCompile>
+    <ClCompile Include="draw\style\draw_brush.cpp">
+      <Filter>draw\style</Filter>
+    </ClCompile>
+    <ClCompile Include="draw\style\draw_style.cpp">
+      <Filter>draw\style</Filter>
+    </ClCompile>
+    <ClCompile Include="pen_dlg.cpp">
+      <Filter>PenDlg</Filter>
+    </ClCompile>
+    <ClCompile Include="brush_dlg.cpp">
+      <Filter>BrushDlg</Filter>
+    </ClCompile>
+    <ClCompile Include="draw\draw_graphics.cpp">
+      <Filter>draw</Filter>
+    </ClCompile>
+    <ClCompile Include="draw\draw_rectangle.cpp">
+      <Filter>draw</Filter>
+    </ClCompile>
+    <ClCompile Include="draw\draw_line.cpp">
+      <Filter>draw</Filter>
+    </ClCompile>
+    <ClCompile Include="draw\draw_round.cpp">
+      <Filter>draw</Filter>
+    </ClCompile>
+    <ClCompile Include="draw\draw_polygon.cpp">
+      <Filter>draw</Filter>
+    </ClCompile>
+    <ClCompile Include="edit_style_dlg.cpp">
+      <Filter>EditStyleDlg</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MFCCAD.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\MFCCAD.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\MFCCADDoc.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\MFCCAD.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Toolbar.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
