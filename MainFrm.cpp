@@ -11,6 +11,8 @@
 
 #include"MFCCADView.h"
 
+#include "dlg_view.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -100,7 +102,7 @@ void CMainFrame::Dump(CDumpContext& dc) const
 
 
 BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext) {
-	spliter.CreateStatic(this, 1, 2); //一行两列
+	spliter.CreateStatic(this, 1, 3); //一行两列
 
 	CRect rcClient;
 	GetClientRect(&rcClient);
@@ -110,9 +112,9 @@ BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext) {
 		SIZE{ rcClient.Width() / 6, rcClient.Height() }, pContext);
 
 	spliter.CreateView(0, 1, RUNTIME_CLASS(CMFCCADView),
-		SIZE{ rcClient.Width() * 5 / 3, rcClient.Height() }, pContext);
+		SIZE{ rcClient.Width() * 4 / 6, rcClient.Height() }, pContext);
 
-	//spliter.CreateView(0, 0, RUNTIME_CLASS(TreeCWnd),
-	//	SIZE{ rcClient.Width() / 3, rcClient.Height() }, pContext);
+	spliter.CreateView(0, 2, RUNTIME_CLASS(DlgView),
+		SIZE{ rcClient.Width() / 6, rcClient.Height() }, pContext);
 	return TRUE;//CFrameWnd::OnCreateClient(lpcs, pContext);
 }

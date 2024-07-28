@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <afxcview.h>
+//#include <afxwin.h>
 #include "MFCCADDoc.h"
 // tree_cwnd 视图
 #include "MFCCADView.h"
@@ -16,7 +17,7 @@ protected:
 
 	//初始化样式
 	void InitTreeStyle();
-	//更新绘画窗口
+	//更得到绘制窗口的指针
 	void GetDrawPtr();
 	//设置选中
 	void SetDrawSelectObject(CMFCCADView* drawview, DWORD64 key);

@@ -186,6 +186,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="brush_dlg.h" />
+    <ClInclude Include="dlg_view.h" />
     <ClInclude Include="draw\draw.h" />
     <ClInclude Include="draw\draw_factory.h" />
     <ClInclude Include="draw\draw_graphics.h" />
@@ -210,6 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="brush_dlg.cpp" />
+    <ClCompile Include="dlg_view.cpp" />
     <ClCompile Include="draw\draw.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\pch.h</PrecompiledHeaderFile>
     </ClCompile>

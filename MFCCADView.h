@@ -9,6 +9,9 @@
 #include "edit_style_dlg.h"
 #include "MFCCADDoc.h"
 #include "tree_cwnd.h"
+#include "dlg_view.h"
+
+typedef class DlgView;
 
 class CMFCCADView : public CView {
 
@@ -28,8 +31,15 @@ public:
 public:
 
 private:
+	//更新Tree控件
 	void UpdateTreeView();
+	//添加数据到Tree控件
 	void AddDataTreeView(CTreeCtrl& tree_ctrl);
+	//更新ViewDlg控件
+	void UpdateDlgView();
+	//添加数据到dlg控件
+	void SetDataForDlgView(DlgView* dlg);
+
 // 重写
 public:
 	virtual void OnDraw(CDC* pDC);  // 重写以绘制该视图

@@ -135,6 +135,40 @@ void CMFCCADView::AddDataTreeView(CTreeCtrl& tree_ctrl) {
 	return;
 }
 
+/// <summary>
+/// 更新ViewDlg控件
+/// </summary>
+void CMFCCADView::UpdateDlgView() {
+	if (drawdc.SelectEmpty()) {
+		return;
+	}
+	CMFCCADDoc* doc_ptr = (CMFCCADDoc*)GetDocument();
+	POSITION pos = doc_ptr->GetFirstViewPosition();
+	while (pos != NULL)
+	{
+		CView* pView = doc_ptr->GetNextView(pos);
+		if (pView->GetRuntimeClass()->IsDerivedFrom(RUNTIME_CLASS(DlgView))) {
+			DlgView* dlg = (DlgView*)pView;
+			SetDataForDlgView(dlg);
+			return;
+		}
+	}
+	return;
+	return;
+}
+
+/// <summary>
+/// 设置相应数据到Dlg当中
+/// </summary>
+/// <param name="dlg">Dlg对象指针</param>
+void CMFCCADView::SetDataForDlgView(DlgView* dlg) {
+	LOGPEN pen = drawdc.DrawSelectGetPen();
+	LOGBRUSH brush = drawdc.DrawSelectGetBrush();
+	dlg->SetDefStyle(brush, pen);
+	dlg->UpdateDlgView();
+	return;
+}
+
 void CMFCCADView::OnDraw(CDC* pDC)
 {
 	CMFCCADDoc* pDoc = GetDocument();
@@ -148,6 +182,7 @@ void CMFCCADView::OnDraw(CDC* pDC)
 	drawdc.DrawPaintDC(pDC, crect_wnd);
 	//更新树控件
 	UpdateTreeView();
+	UpdateDlgView();
 	return;
 }
 

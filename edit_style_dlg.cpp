@@ -64,7 +64,7 @@ void EditStyleDlg::InitDlg() {
 	brush_hatch_ccb.AddString(L"45度交叉");	//HS_DIAGCROS
 	//brush_hatch_ccb.SetCurSel(0);
 
-	//brush_colour_cb.EnableOtherButton(_T("Other"), FALSE, TRUE);
+	brush_colour_cb.EnableOtherButton(_T("Other"), FALSE, TRUE);
 
 	pdlg_ptr = this;
 
@@ -88,9 +88,9 @@ void EditStyleDlg::InitDlg() {
 	pen_style_ccb.AddString(L"       ");
 	//pen_style_ccb.SetCurSel(PS_SOLID);
 
-	//pen_colour_cb.EnableOtherButton(_T("Other"), FALSE, TRUE);
+	pen_colour_cb.EnableOtherButton(_T("Other"), FALSE, TRUE);
 
-
+	//设置默认样式
 	brush_style_ccb.SetCurSel(logbrush.lbStyle);
 	brush_hatch_ccb.SetCurSel(logbrush.lbHatch);
 	brush_colour_cb.SetColor(logbrush.lbColor);

@@ -9,6 +9,7 @@
 #define IDD_DIALOG2                     311
 #define IDD_DIALOG3                     312
 #define IDR_MENU1                       313
+#define IDD_DIALOG4                     313
 #define IDR_MENU2                       314
 #define IDC_BUTTON1                     1000
 #define IDC_BUTTON2                     1001
